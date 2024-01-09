@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Terminate already running polybar, stalonetray, sxhkd and dunst instances
+processes=("polybar" "sxhkd" "dunst" "stalonetray")
+
+for process in "${processes[@]}"; do
+	if pgrep -f "$process"; then
+		pkill -9 -f "$process" > /dev/null; sleep 0.1
+	fi
+done
+
+# Start polybar
+for mon in $(polybar --list-monitors | cut -d":" -f1); do
+  MONITOR=$mon polybar -q "${RICETHEME}" -c "${rice_dir}/config.ini" &
+done
+
+# Reload sxhkd daemon
+sxhkd -c "$HOME"/.config/bspwm/scripts/rc/sxhkdrc &
+
+# Launch picom
+picom --config $HOME/.config/bspwm/scripts/configs/picom.conf --experimental-backends &
+
+# Set background
+feh --bg-fill ${rice_dir}/wallpaper.png &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/scripts/rc/dunstrc &
+
+# Launch stalonetray
+stalonetray -c "$HOME"/.config/bspwm/scripts/rc/stalonetrayrc & sleep 0.1 && xdo hide -N stalonetray && touch "/tmp/syshide.lock"
+
+# Fix cursor
+xsetroot -cursor_name left_ptr
+
+# Monitor layout
+~/.screenlayout/default.sh
+
+# Set proper refresh rate
+xrandr --output HDMI-0 --mode 1920x1080 --rate 144.00 --output DP-2 --mode 1920x1080 --rate 144.00
+

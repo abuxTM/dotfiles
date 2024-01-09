@@ -1,0 +1,11 @@
+#!/bin/bash
+
+INTERNAL_MONITOR="DP-2"
+EXTERNAL_MONITOR="HDMI-0"
+if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+	bspc monitor "$EXTERNAL_MONITOR" -d '' '' '' ''
+	bspc monitor "$INTERNAL_MONITOR" -d '' '' '' ''
+	bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+else
+	bspc monitor "$INTERNAL_MONITOR" -d '' '' '' '' '' '' '' ''
+fi

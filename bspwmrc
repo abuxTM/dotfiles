@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Read the RICETHEME from the file
+read -r RICETHEME < "$HOME/.config/bspwm/rice"
+
+# Export RICETHEME
+export RICETHEME
+
+# Update the PATH variable
+PATH="$HOME/.config/bspwm/scripts/bspwm:$HOME/.config/bspwm/scripts/polybar:$PATH"
+
+# Set rice_dir and rice variables
+rice_dir="$HOME/.config/bspwm/rices/$RICETHEME"
+rice="$RICETHEME"
+
+# Export rice_dir
+export rice_dir
+
+# Fix java applications
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# █   █ ▄▀▄ █▀▄ █▄▀ ▄▀▀ █▀▄ ▄▀▄ ▄▀▀ ██▀ ▄▀▀
+# ▀▄▀▄▀ ▀▄▀ █▀▄ █ █ ▄██ █▀  █▀█ ▀▄▄ █▄▄ ▄██
+
+bash "$HOME"/.config/bspwm/scripts/bspwm/workspaces &
+
+# ██▄ ▄▀▀ █▀▄ █   █ █▄ ▄█   ▄▀▀ ▄▀▄ █▄ █ █▀ █ ▄▀ 
+# █▄█ ▄██ █▀  ▀▄▀▄▀ █ ▀ █   ▀▄▄ ▀▄▀ █ ▀█ █▀ █ ▀▄█
+
+bash "$HOME"/.config/bspwm/scripts/bspwm/externalRules &
+
+# ▄▀▄ █ █ ▀█▀ ▄▀▄ ▄▀▀ ▀█▀ ▄▀▄ █▀▄ ▀█▀
+# █▀█ ▀▄█  █  ▀▄▀ ▄██  █  █▀█ █▀▄  █ 
+
+bash "$HOME"/.config/bspwm/scripts/bspwm/autostart &

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+case "$1" in
+  --menu)
+    rofi -show drun
+		;; 
+  --update)
+		alacritty --hold --class FloaTerm,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
+		;;
+	--checkupdates)
+		alacritty --hold --class Updating,Alacritty -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
+		;;
+  # Apps
+  --soundcontrol)
+    pavucontrol
+    ;;
+  *)
+    echo "This option is not valid"
+    ;;
+esac
