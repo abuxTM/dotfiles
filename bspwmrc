@@ -33,3 +33,4 @@ bash "$HOME"/.config/bspwm/scripts/bspwm/externalRules &
 # █▀█ ▀▄█  █  ▀▄▀ ▄██  █  █▀█ █▀▄  █ 
 
 bash "$HOME"/.config/bspwm/scripts/bspwm/autostart &
+

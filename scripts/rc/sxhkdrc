@@ -23,11 +23,11 @@ super + h
 
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-	Volume{ --inc, --dec, --toggle}
+	amixer { -q sset Master 5%+, --dec, --toggle}
 
 # Music Control
 XF86Audio{Next,Prev,Play,Stop}
-	MediaControl {--next,--previous,--toggle,--stop}
+	playerctl {next,previous,play-pause,stop}
 
 # jgmenu
 ~button3

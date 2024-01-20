@@ -1,0 +1,25 @@
+;; █ █ ▄▀▄ █▀▄ █ ▄▀▄ ██▄ █   ██▀ ▄▀▀
+;; ▀▄▀ █▀█ █▀▄ █ █▀█ █▄█ █▄▄ █▄▄ ▄██
+
+;; Profile vars
+(defvar NAME "abuxTM")
+
+;; █   █ █ █▀▄ ▄▀  ██▀ ▀█▀ ▄▀▀
+;; ▀▄▀▄▀ █ █▄▀ ▀▄█ █▄▄  █  ▄██
+
+;; profile
+(defwidget user [] 
+	(box :class "genwin" :orientation "v" :spacing 35 :space-evenly "false" :vexpand "false" :hexpand "false"
+		(label :class "fullname" :halign "center" :wrap "true" :limit-width 25 :text NAME)
+    (button :onclick 'appManager --menu' "APPS")
+  )
+)
+
+;; █   █ █ █▄ █ █▀▄ ▄▀▄ █   █ ▄▀▀
+;; ▀▄▀▄▀ █ █ ▀█ █▄▀ ▀▄▀ ▀▄▀▄▀ ▄██
+
+;; profile
+(defwindow profile :stacking "fg" :focusable "false" :screen 1 
+	:geometry (geometry :x 150 :y 150 :width 350 :height 440)
+	(user)
+)
